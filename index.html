@@ -1,0 +1,160 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space Landing Page with Animation</title>
+
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .landing-page {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            position: relative;
+             background-image: url("image.jpg");;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .container {
+            text-align: left;
+            color: #FFFFFF;
+            animation: floating 3s ease-in-out infinite;
+            margin-left: 70px;
+        }
+
+        @keyframes floating {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 12px 24px;
+            font-size: 24px;
+            background-color: #FFFFFF;
+            color: #000000;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #CCCCCC;
+        }
+
+        .inner-page {
+            display: none;
+            background-color: #000000;
+            color: #FFFFFF;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .value-button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #FFFFFF;
+            color: #000000;
+            text-decoration: none;
+            border-radius: 4px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="landing-page">
+        <div class="container">
+            <h1>Smoke Detection Analyzer</h1>
+            <p>Predict the possibility of presence of smoke </p>
+            <a href="#" class="cta-button" id="get-started-btn">Get Started</a>
+        </div>
+    </div>
+
+    <div class="inner-page" id="inner-page">
+        <h1>Enter The Measurements</h1>
+        <p>Provide measurement values to get accurate predictions</p>
+        <form action="/login" method="post">
+            <div class="button-grid">
+                <div>
+            <p>UTC</p>
+            <p><input type="text" class="value-button" name="ut" /></p>
+            <p>Temperature[C]</p>
+            <input type="text" class="value-button" name="te" />
+            <p>Humidity[%]</p>
+            <input type="text" class="value-button" name="hu"  />
+            <p>TVOC[ppb]</p>
+            <input type="text" class="value-button" name="tv" />
+            <p>eCO2[ppm]</p>
+            <input type="text" class="value-button" name="co" />
+            <p>Raw H2</p>
+            <input type="text" class="value-button" name="ra" />
+            <p>Raw Ethanol</p>
+            <input type="text" class="value-button" name="et" />
+            <p>Pressure[hPa]</p>
+            <input type="text" class="value-button" name="pr" />
+            <p>PM1.0</p>
+            <input type="text" class="value-button" name="pm" />
+            <p>PM2.5</p>
+            <input type="text" class="value-button" name="pn" />
+            <p>NC0.5</p>
+            <input type="text" class="value-button" name="nc" />
+            <p>NC1.0</p>
+            <input type="text" class="value-button" name="nd" />
+            <p>NC2.5</p>
+            <input type="text" class="value-button" name="ne" />
+            <p>CNT</p>
+            <input type="text" class="value-button" name="cn" />
+            <p><input type="submit" value="Submit" class="cta-button" /></p>
+        </form>
+        <b>{{y}}</b>
+    </div>
+
+    <script>
+    const getStartedBtn = document.getElementById('get-started-btn');
+    const landingPage = document.querySelector('.landing-page');
+    const innerPage = document.getElementById('inner-page');
+
+    getStartedBtn.addEventListener('click', () => {
+        landingPage.style.display = 'none';
+        innerPage.style.display = 'block';
+    });
+
+    const submitBtn = document.getElementById('submit-btn');
+    submitBtn.addEventListener('click', (event) => {
+        event.preventDefault();
+        const formData = new FormData(form);
+        const values = Object.fromEntries(formData.entries());
+        console.log(values);
+        const successMessage = document.getElementById('success-message');
+        successMessage.style.display = 'block';
+    });
+</script>
+
+</body>
+</html>
